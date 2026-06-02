@@ -1,0 +1,256 @@
+/* ============================================
+   CSS Variables - Định nghĩa các biến CSS
+   ============================================ */
+:root {
+  /* Màu sắc chính */
+  --primary-color: #0066cc;
+  --primary-hover: #0052a3;
+  --background-color: #f8f9fa;
+  --text-color: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-color: #00a3ff;
+
+  /* Font */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-large: 3.5rem;
+  --font-size-medium: 1.25rem;
+
+  /* Khoảng cách */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Animation */
+  --transition-duration: 0.3s;
+  --transition-easing: ease-in-out;
+}
+
+/* Dark mode support - Hỗ trợ chế độ tối */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-secondary: #b0b0b0;
+  }
+}
+
+/* ============================================
+   Reset & Base Styles - Đặt lại và cơ sở
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color var(--transition-duration)
+    var(--transition-easing);
+}
+
+/* ============================================
+   Container & Main Layout - Bố cục chính
+   ============================================ */
+
+/* Thiết lập chiều cao toàn bộ dự án */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Container chính - Căn giữa nội dung */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+/* ============================================
+   Typography - Kiểu chữ
+   ============================================ */
+
+h1 {
+  font-size: var(--font-size-large);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+
+  /* Hiệu ứng fade-in animation */
+  animation: fadeIn 1s var(--transition-easing) forwards;
+  opacity: 0;
+  animation-delay: 0.1s;
+}
+
+p {
+  font-size: var(--font-size-medium);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+
+  /* Hiệu ứng fade-in animation */
+  animation: fadeIn 1s var(--transition-easing) forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+/* ============================================
+   Animations - Hiệu ứng động
+   ============================================ */
+
+/* Hiệu ứng fade-in - Mờ dần vào */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hiệu ứng pulse - Nhấp nháy nhẹ */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Hiệu ứng glow - Phát sáng */
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px transparent;
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+  }
+}
+
+/* ============================================
+   Responsive Design - Thiết kế Responsive
+   ============================================ */
+
+/* Tablet (768px trở lên) */
+@media (max-width: 768px) {
+  :root {
+    --font-size-large: 2.5rem;
+    --font-size-medium: 1rem;
+    --spacing-lg: 1.5rem;
+  }
+
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  h1 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (480px trở lên) */
+@media (max-width: 480px) {
+  :root {
+    --font-size-large: 2rem;
+    --font-size-medium: 0.9rem;
+    --spacing-lg: 1rem;
+  }
+
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  h1 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  p {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   Interactive Elements - Các yếu tố tương tác
+   ============================================ */
+
+/* Focus states cho accessibility */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+a,
+button {
+  transition: color var(--transition-duration) var(--transition-easing),
+    background-color var(--transition-duration) var(--transition-easing),
+    transform var(--transition-duration) var(--transition-easing);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* ============================================
+   Utilities - Tiện ích
+   ============================================ */
+
+/* Ẩn scrollbar nhưng vẫn cho phép scroll */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
